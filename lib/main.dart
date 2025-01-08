@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:widgep_app/config/theme/apptheme.dart';
+import 'package:widgep_app/config/theme/app_theme.dart';
+import 'package:widgep_app/presentation/screens/home/home_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -10,16 +11,11 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = AppTheme(selectedColor: 5).theme();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: AppTheme(selectedColor: 2).getTheme(),
-      home: Scaffold(
-        body: SizedBox.expand(
-            child: DecoratedBox(
-          decoration:
-              BoxDecoration(color: Theme.of(context).colorScheme.primary),
-        )),
-      ),
+      theme: theme,
+      home: const HomeScreen(),
     );
   }
 }

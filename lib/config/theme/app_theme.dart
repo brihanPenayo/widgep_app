@@ -13,9 +13,13 @@ const List<Color> colors = [
 class AppTheme {
   final int selectedColor;
 
-  AppTheme({this.selectedColor = 0})
+  AppTheme({required this.selectedColor})
       : assert(selectedColor >= 0 && selectedColor < colors.length);
 
-  ThemeData getTheme() =>
-      ThemeData(useMaterial3: true, colorSchemeSeed: colors[selectedColor]);
+  ThemeData theme() {
+    return ThemeData(
+        useMaterial3: true,
+        colorSchemeSeed: colors[selectedColor],
+        appBarTheme: const AppBarTheme(centerTitle: true));
+  }
 }
