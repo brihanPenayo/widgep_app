@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:widgep_app/config/menuItems/menu_items.dart';
+import 'package:widgep_app/presentation/screens/buttons/buttons_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -49,7 +51,8 @@ class _CustomListTile extends StatelessWidget {
       title: Text(menuItem.title),
       subtitle: Text(menuItem.subTitle),
       onTap: () {
-        // TODO: navegar a otras pantallas al presionar
+        Navigator.pushNamed(context, '/cards');
+
         // Navigator.pushNamed(context, menuItem.link);
       },
     );
