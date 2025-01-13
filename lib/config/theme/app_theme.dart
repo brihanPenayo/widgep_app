@@ -20,6 +20,8 @@ class AppTheme {
     return ThemeData(
         useMaterial3: true,
         colorSchemeSeed: colors[selectedColor],
-        appBarTheme: const AppBarTheme(centerTitle: true));
+        appBarTheme: const AppBarTheme(
+          centerTitle: true,
+        ));
   }
 }

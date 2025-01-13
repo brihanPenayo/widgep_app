@@ -85,9 +85,12 @@ class CustomButton extends StatelessWidget {
     final color = Theme.of(context).colorScheme;
     return Material(
       color: color.primary,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        child: Text(text, style: TextStyle(color: color.onPrimary)),
+      child: InkWell(
+        onTap: () {},
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+          child: Text(text, style: TextStyle(color: color.onPrimary)),
+        ),
       ),
     );
   }
