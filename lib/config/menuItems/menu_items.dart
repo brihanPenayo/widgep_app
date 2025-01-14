@@ -15,28 +15,38 @@ class MenuItems {
 
 const appMenuItems = <MenuItems>[
   MenuItems(
+      title: 'Buttons',
+      link: '/buttons',
+      subTitle: 'Varios botones en flutter',
+      icon: Icons.smart_button_rounded),
+  MenuItems(
       title: 'Cards',
       link: '/cards',
       subTitle: 'Tarjetas en flutter',
       icon: Icons.credit_card_outlined),
   MenuItems(
-      title: 'Buttons',
-      link: '/buttons',
-      subTitle: 'Varios botones en flutter',
-      icon: Icons.smart_button_outlined),
+      title: 'Progress Indicators',
+      link: '/progress',
+      subTitle: 'Indicadores de progreso en flutter',
+      icon: Icons.refresh_rounded),
   MenuItems(
-      title: 'Test',
-      link: '/test',
-      subTitle: 'Un test en flutter',
-      icon: Icons.textsms),
+      title: 'Snackbars',
+      link: '/snackbar',
+      subTitle: 'Snackbars en flutter',
+      icon: Icons.snippet_folder_outlined),
   MenuItems(
-      title: 'Inputs',
-      link: '/inputs',
-      subTitle: 'Inputs en flutter',
-      icon: Icons.input_outlined),
+      title: 'Animated',
+      link: '/animated',
+      subTitle: 'Animated en flutter',
+      icon: Icons.animation_outlined),
   MenuItems(
-      title: 'Alerts',
-      link: '/alerts',
-      subTitle: 'Alertas en flutter',
-      icon: Icons.warning_amber_outlined)
+      title: 'UI Controls',
+      link: '/ui-controls',
+      subTitle: 'UI Controls en flutter',
+      icon: Icons.control_camera_sharp),
+  MenuItems(
+      title: 'App Tutorial',
+      link: '/app-tutorial',
+      subTitle: 'App Tutorial en flutter',
+      icon: Icons.app_settings_alt_outlined)
 ];
