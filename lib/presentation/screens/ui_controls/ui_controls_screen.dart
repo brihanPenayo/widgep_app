@@ -12,7 +12,7 @@ class UiControlsScreen extends StatelessWidget {
   }
 }
 
-enum Transportation { car, bus, plane, bike }
+enum Transportation { car, bus, plane, bike, boat }
 
 class _UiControlsView extends StatefulWidget {
   const _UiControlsView();
@@ -24,6 +24,13 @@ class _UiControlsView extends StatefulWidget {
 class _UiControlsViewState extends State<_UiControlsView> {
   bool isDeveloperMode = true;
   Transportation selected = Transportation.car;
+  final List<Map<String, dynamic>> options = [
+    {'value': Transportation.car, 'title': 'Car', 'subTitle': 'by car'},
+    {'value': Transportation.bus, 'title': 'Bus', 'subTitle': 'by bus'},
+    {'value': Transportation.plane, 'title': 'Plane', 'subTitle': 'by plane'},
+    {'value': Transportation.bike, 'title': 'Bike', 'subTitle': 'by bike'},
+    {'value': Transportation.boat, 'title': 'Boat', 'subTitle': 'by boat'},
+  ];
   @override
   Widget build(BuildContext context) {
     return ListView(physics: const ClampingScrollPhysics(), children: [
@@ -76,6 +83,41 @@ class _UiControlsViewState extends State<_UiControlsView> {
               selected = Transportation.plane;
             });
           }),
+      ...options.map((e) => _TransportationListTile(
+          value: e['value'],
+          title: e['title'],
+          subtitle: e['subTitle'],
+          groupValue: selected,
+          onChanged: (v) {
+            setState(() {
+              selected = e['value'];
+            });
+          }))
     ]);
+  }
+}
+
+class _TransportationListTile extends StatelessWidget {
+  final Transportation value;
+  final String title;
+  final String subtitle;
+  final Transportation groupValue;
+  final ValueChanged<Transportation?> onChanged;
+  const _TransportationListTile(
+      {required this.value,
+      required this.title,
+      required this.subtitle,
+      required this.groupValue,
+      required this.onChanged});
+
+  @override
+  Widget build(BuildContext context) {
+    return RadioListTile(
+      value: value,
+      title: Text(title),
+      subtitle: Text(subtitle),
+      groupValue: groupValue,
+      onChanged: onChanged,
+    );
   }
 }
