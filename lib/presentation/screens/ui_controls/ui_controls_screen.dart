@@ -83,16 +83,22 @@ class _UiControlsViewState extends State<_UiControlsView> {
               selected = Transportation.plane;
             });
           }),
-      ...options.map((e) => _TransportationListTile(
-          value: e['value'],
-          title: e['title'],
-          subtitle: e['subTitle'],
-          groupValue: selected,
-          onChanged: (v) {
-            setState(() {
-              selected = e['value'];
-            });
-          }))
+      ExpansionTile(
+        title: const Text('Transportations'),
+        subtitle: Text('Selected: ${selected.name.toUpperCase()}'),
+        children: [
+          ...options.map((e) => _TransportationListTile(
+              value: e['value'],
+              title: e['title'],
+              subtitle: e['subTitle'],
+              groupValue: selected,
+              onChanged: (v) {
+                setState(() {
+                  selected = e['value'];
+                });
+              })),
+        ],
+      )
     ]);
   }
 }
