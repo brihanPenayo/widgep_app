@@ -31,6 +31,12 @@ class _UiControlsViewState extends State<_UiControlsView> {
     {'value': Transportation.bike, 'title': 'Bike', 'subTitle': 'by bike'},
     {'value': Transportation.boat, 'title': 'Boat', 'subTitle': 'by boat'},
   ];
+  List<Map<String, dynamic>> wantedFoods = [
+    {'value': true, 'title': 'Want a Snack?'},
+    {'value': false, 'title': 'Want a Lunch?'},
+    {'value': false, 'title': 'Want a Dinner?'},
+    {'value': false, 'title': 'Want a Breakfast?'}
+  ];
   @override
   Widget build(BuildContext context) {
     return ListView(physics: const ClampingScrollPhysics(), children: [
@@ -98,8 +104,35 @@ class _UiControlsViewState extends State<_UiControlsView> {
                 });
               })),
         ],
-      )
+      ),
+      ...wantedFoods.map((e) => _CustomCheckboxTile(
+            value: e['value'],
+            title: e['title'],
+            onChanged: (v) {
+              setState(() {
+                e['value'] = v;
+              });
+            },
+          )),
+      // _CustomCheckboxTile()
     ]);
+  }
+}
+
+class _CustomCheckboxTile extends StatelessWidget {
+  final bool value;
+  final ValueChanged<bool?> onChanged;
+  final String title;
+  const _CustomCheckboxTile({
+    required this.value,
+    required this.onChanged,
+    required this.title,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return CheckboxListTile(
+        title: Text(title), value: value, onChanged: onChanged);
   }
 }
 
