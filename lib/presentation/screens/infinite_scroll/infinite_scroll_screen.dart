@@ -52,6 +52,19 @@ class _InfiniteScrollScreenState extends State<InfiniteScrollScreen> {
     isMounted = false;
   }
 
+  Future<void> onRefresh() async {
+    isLoading = true;
+    setState(() {});
+    await Future.delayed(const Duration(seconds: 2));
+    if (!isMounted) return;
+    isLoading = false;
+    final lastId = images.last;
+    images.clear();
+    images.add(lastId + 1);
+    addFive();
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,24 +73,27 @@ class _InfiniteScrollScreenState extends State<InfiniteScrollScreen> {
           context: context,
           removeTop: true,
           removeBottom: true,
-          child: ListView.builder(
-              itemCount: images.length,
-              controller: scrollController,
-              physics: const BouncingScrollPhysics(),
-              itemBuilder: (context, index) {
-                return Column(children: [
-                  FadeInImage(
-                      fadeInDuration: const Duration(milliseconds: 350),
-                      fit: BoxFit.cover,
-                      height: 300,
-                      width: double.infinity,
-                      placeholder:
-                          const AssetImage('assets/images/jar-loading.gif'),
-                      image: NetworkImage(
-                          'https://picsum.photos/id/${images[index]}/500/300')),
-                  const SizedBox(height: 10),
-                ]);
-              }),
+          child: RefreshIndicator(
+            onRefresh: onRefresh,
+            child: ListView.builder(
+                itemCount: images.length,
+                controller: scrollController,
+                physics: const BouncingScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return Column(children: [
+                    FadeInImage(
+                        fadeInDuration: const Duration(milliseconds: 350),
+                        fit: BoxFit.cover,
+                        height: 300,
+                        width: double.infinity,
+                        placeholder:
+                            const AssetImage('assets/images/jar-loading.gif'),
+                        image: NetworkImage(
+                            'https://picsum.photos/id/${images[index]}/500/300')),
+                    const SizedBox(height: 10),
+                  ]);
+                }),
+          ),
         ),
         isLoading
             ? Positioned(
