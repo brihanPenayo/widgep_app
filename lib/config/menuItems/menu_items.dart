@@ -48,5 +48,10 @@ const appMenuItems = <MenuItems>[
       title: 'App Tutorial',
       link: '/app-tutorial',
       subTitle: 'App Tutorial en flutter',
-      icon: Icons.app_settings_alt_outlined)
+      icon: Icons.app_settings_alt_outlined),
+  MenuItems(
+      title: 'Infinite Scroll',
+      link: '/infinite-scroll',
+      subTitle: 'Infinite scroll en flutter',
+      icon: Icons.install_mobile_rounded)
 ];
