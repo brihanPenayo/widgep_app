@@ -40,6 +40,12 @@ class _InfiniteScrollScreenState extends State<InfiniteScrollScreen> {
     isLoading = false;
     if (!isMounted) return;
     setState(() {});
+    scrollToBottom();
+  }
+
+  void scrollToBottom() {
+    if (scrollController.position.pixels + 150 <=
+        scrollController.position.maxScrollExtent) return;
     scrollController.animateTo(scrollController.position.pixels + 200,
         duration: const Duration(milliseconds: 250),
         curve: Curves.fastOutSlowIn);
