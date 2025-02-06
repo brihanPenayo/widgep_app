@@ -5,7 +5,8 @@ import 'package:widget_app/presentation/widgets/custom_drawer/custom_drawer.dart
 
 class HomeScreen extends StatelessWidget {
   static const String name = 'home-screen';
-  const HomeScreen({super.key});
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,9 @@ class HomeScreen extends StatelessWidget {
         title: const Text('Flutter Widgets with Material3'),
       ),
       body: const _HomeView(),
-      drawer: const CustomDrawer(),
+      drawer: CustomDrawer(
+        scaffoldKey: scaffoldKey,
+      ),
     );
   }
 }
