@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:widget_app/config/menuItems/menu_items.dart';
+import 'package:widget_app/presentation/widgets/custom_drawer/custom_drawer.dart';
 
 class HomeScreen extends StatelessWidget {
   static const String name = 'home-screen';
@@ -13,6 +14,7 @@ class HomeScreen extends StatelessWidget {
         title: const Text('Flutter Widgets with Material3'),
       ),
       body: const _HomeView(),
+      drawer: const CustomDrawer(),
     );
   }
 }
