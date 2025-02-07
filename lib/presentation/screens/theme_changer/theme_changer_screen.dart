@@ -34,7 +34,8 @@ class ThemeChanger extends ConsumerWidget {
                     'Este color',
                     style: TextStyle(color: color),
                   ),
-                  subtitle: Text(color.value.toString()),
+                  subtitle: Text(
+                      '#${color.toString().split('(0xff')[1].split(')')[0].toUpperCase()}'),
                   value: index,
                   groupValue: colorIndex,
                   onChanged: (value) {
