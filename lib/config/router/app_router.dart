@@ -51,5 +51,10 @@ final appRouter = GoRouter(
       name: AppTutorialScreen.name,
       builder: (context, state) => const AppTutorialScreen(),
     ),
+    GoRoute(
+      path: '/counter',
+      name: CounterScreen.name,
+      builder: (context, state) => const CounterScreen(),
+    ),
   ],
 );
