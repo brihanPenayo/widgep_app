@@ -59,4 +59,9 @@ const appMenuItems = <MenuItems>[
       link: '/infinite-scroll',
       subTitle: 'Infinite scroll en flutter',
       icon: Icons.install_mobile_rounded),
+  MenuItems(
+      title: 'Theme Changer',
+      link: '/theme-changer',
+      subTitle: 'Cambiar tema en flutter',
+      icon: Icons.color_lens_outlined),
 ];
