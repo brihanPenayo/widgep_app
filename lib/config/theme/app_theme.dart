@@ -14,7 +14,7 @@ class AppTheme {
   final int selectedColor;
   final bool darkMode;
 
-  AppTheme({required this.selectedColor, this.darkMode = false})
+  AppTheme({this.selectedColor = 0, this.darkMode = false})
       : assert(selectedColor >= 0 && selectedColor < colors.length);
 
   ThemeData theme() {
@@ -25,5 +25,14 @@ class AppTheme {
         appBarTheme: const AppBarTheme(
           centerTitle: true,
         ));
+  }
+
+  AppTheme copyWith({
+    int? selectedColor,
+    bool? darkMode,
+  }) {
+    return AppTheme(
+        selectedColor: selectedColor ?? this.selectedColor,
+        darkMode: darkMode ?? this.darkMode);
   }
 }

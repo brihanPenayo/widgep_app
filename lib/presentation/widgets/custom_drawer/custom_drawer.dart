@@ -24,7 +24,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
           selectedOptionIndex = index;
         });
         context.push(appMenuItems[index].link);
-        widget.scaffoldKey.currentState?.closeDrawer();
+        context.pop();
       },
       selectedIndex: selectedOptionIndex,
       children: [
@@ -61,14 +61,14 @@ class _CustomDrawerState extends State<CustomDrawer> {
           child: Divider(),
         ),
         Consumer(builder: (context, ref, child) {
-          final isDark = ref.watch(isDarkMode);
+          final isDark = ref.watch(themeNotifierProvider).darkMode;
           return Padding(
               padding: const EdgeInsets.only(left: 20),
               child: SwitchListTile(
                   title: const Text('Dark Mode'),
                   value: isDark,
                   onChanged: (value) {
-                    ref.read(isDarkMode.notifier).state = value;
+                    ref.read(themeNotifierProvider.notifier).toggleDarkMode();
                   }));
         })
       ],

@@ -9,15 +9,15 @@ class ThemeChanger extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = ref.watch(selectedColor);
-    final bool isDark = ref.watch(isDarkMode);
-    final colorIndex = ref.watch(indexColor);
+    final bool isDark = ref.watch(themeNotifierProvider).darkMode;
+    final colorIndex = ref.watch(themeNotifierProvider).selectedColor;
     return Scaffold(
         appBar: AppBar(
           title: const Text('Theme Changer Screen'),
           actions: [
             IconButton(
                 onPressed: () {
-                  ref.read(isDarkMode.notifier).state = !isDark;
+                  ref.read(themeNotifierProvider.notifier).toggleDarkMode();
                 },
                 icon: isDark
                     ? const Icon(Icons.light_mode_outlined)
@@ -39,7 +39,9 @@ class ThemeChanger extends ConsumerWidget {
                   value: index,
                   groupValue: colorIndex,
                   onChanged: (value) {
-                    ref.read(indexColor.notifier).state = value!;
+                    ref
+                        .read(themeNotifierProvider.notifier)
+                        .selectColor(value!);
                   });
             }));
   }
